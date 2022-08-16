@@ -1,12 +1,9 @@
 # JMH
 
-Benchmark                              Mode  Cnt     Score    Error  Units
-JMHtest.TestMethodk1.secp256k1Sign    thrpt    5  1420.482 ± 67.404  ops/s
-JMHtest.TestMethodk1.secp256k1Verify  thrpt    5   877.615 ± 14.036  ops/s
-JMHtest.TestMethodr1.secp256r1Sign    thrpt    5  1898.284 ± 49.139  ops/s
-JMHtest.TestMethodr1.secp256r1Verify  thrpt    5   913.742 ± 77.081  ops/s
+<img width="432" alt="image" src="https://user-images.githubusercontent.com/76903172/184901779-fbc301b2-21f3-44ac-a96e-9dbc2f4b2fda.png">
 
 JMH demo在JMHtest中
+
 JFR demo在JFRtest中
 
 # 总火焰图
