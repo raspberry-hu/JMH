@@ -24,7 +24,7 @@ JFR demo在JFRtest中
 # 任务三
 demo在sm2中
 
-首先需要对原本不支持SM2曲线的OpenJDK进行适配工作首先是根据类似的曲线（P256和O256）找到对应的修改点，首先是在src/java.base/share/classes/sun/security/util/CurveDB.java中添加SM2曲线的[推荐参数](https://www.oscca.gov.cn/sca/xxgk/2010-12/17/1002386/files/b965ce832cc34bc191cb1cde446b860d.pdf) 之后进行编译，发现OpenJDK在新版本中由Java纯原生的方式来实现ECC，所以需要对报错的地方进行修改，单纯添加曲线参数不能完全添加曲线，因此在对应处添加其他参数make/jdk/src/classes/build/tools/intpoly/FieldGen.java等文件中。
+首先需要对原本不支持SM2曲线的OpenJDK进行适配工作首先是根据类似的曲线（P256和O256）找到对应的修改点，首先是在src/java.base/share/classes/sun/security/util/CurveDB.java中添加SM2曲线的[推荐参数](https://www.oscca.gov.cn/sca/xxgk/2010-12/17/1002386/files/b965ce832cc34bc191cb1cde446b860d.pdf) 之后进行编译，发现OpenJDK在新版本中由Java纯原生的方式来实现ECC，所以需要对报错的地方进行修改，单纯添加曲线参数不能完全添加曲线，因此在对应处添加其他参数make/jdk/src/classes/build/tools/intpoly/FieldGen.java等[文件](https://github.com/raspberry-hu/jdk)。
 
 并在研读过程中发现[ECDSA](https://github.com/openjdk/jdk/blob/a41b12f430b8d6ebbb634c0a6a077ed13c68bcb7/src/jdk.crypto.ec/share/classes/sun/security/ec/ECDSAOperations.java#L258)的相关验证问题，询问导师后了解到，该组件基本用户TLS中，在TLS中已经做了相关校验。
 
