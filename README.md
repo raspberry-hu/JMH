@@ -22,7 +22,8 @@ JFR demo在JFRtest中
 ## ![flamegraph3](https://user-images.githubusercontent.com/76903172/184900746-3258a76f-babd-4e3c-85c4-8d5e7836e675.png)
 
 # 任务三
-首先需要对原本不支持SM2曲线的OpenJDK进行适配工作首先是根据类似的曲线（P256和O256）找到对应的修改点，首先是在src/java.base/share/classes/sun/security/util/CurveDB.java中添加SM2曲线的[推荐参数](https://www.oscca.gov.cn/sca/xxgk/2010-12/17/1002386/files/b965ce832cc34bc191cb1cde446b860d.pdf) 之后进行编译，发现OpenJDK在新版本中由Java纯原生的方式来实现ECC，所以需要对报错的地方进行修改，单纯添加曲线参数不能完全添加曲线，因此在对应处添加其他参数make/jdk/src/classes/build/tools/intpoly/FieldGen.java等文件中，详情可见
+demo在sm2中
+首先需要对原本不支持SM2曲线的OpenJDK进行适配工作首先是根据类似的曲线（P256和O256）找到对应的修改点，首先是在src/java.base/share/classes/sun/security/util/CurveDB.java中添加SM2曲线的[推荐参数](https://www.oscca.gov.cn/sca/xxgk/2010-12/17/1002386/files/b965ce832cc34bc191cb1cde446b860d.pdf) 之后进行编译，发现OpenJDK在新版本中由Java纯原生的方式来实现ECC，所以需要对报错的地方进行修改，单纯添加曲线参数不能完全添加曲线，因此在对应处添加其他参数make/jdk/src/classes/build/tools/intpoly/FieldGen.java等文件中。
 
 并在研读过程中发现[ECDSA](https://github.com/openjdk/jdk/blob/a41b12f430b8d6ebbb634c0a6a077ed13c68bcb7/src/jdk.crypto.ec/share/classes/sun/security/ec/ECDSAOperations.java#L258)的相关验证问题，询问导师后了解到，该组件基本用户TLS中，在TLS中已经做了相关校验。
 
@@ -31,9 +32,9 @@ JFR demo在JFRtest中
 SM2.publicKeyTest.BCSm2p256v1  thrpt    5   10666.465 ±  1578.356  ops/s
 SM2.publicKeyTest.sm2p256v1    thrpt    5   24183.585 ±  2456.464  ops/s
 ```
-## 总火焰图
+总火焰图
 <img width="1261" alt="image" src="https://user-images.githubusercontent.com/76903172/190724879-50ab16d5-1576-469d-a52b-4606d3d4c65a.png">
-## sm2p256v1 火焰图
+sm2p256v1 火焰图（idea Async Profiler生成）
 <img width="1359" alt="image" src="https://user-images.githubusercontent.com/76903172/190726007-6400ba8a-2251-4bdd-b91d-d7610bc2ad9e.png">
-## BCSm2p256v1 火焰图
+BCSm2p256v1 火焰图（idea Async Profiler生成）
 <img width="1361" alt="image" src="https://user-images.githubusercontent.com/76903172/190726728-6a59ea78-f3a2-42d9-8b4a-a3901e5c7e8c.png">
