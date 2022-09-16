@@ -31,3 +31,9 @@ JFR demo在JFRtest中
 SM2.publicKeyTest.BCSm2p256v1  thrpt    5   10666.465 ±  1578.356  ops/s
 SM2.publicKeyTest.sm2p256v1    thrpt    5   24183.585 ±  2456.464  ops/s
 ```
+## 总火焰图
+<img width="1261" alt="image" src="https://user-images.githubusercontent.com/76903172/190724879-50ab16d5-1576-469d-a52b-4606d3d4c65a.png">
+## sm2p256v1 火焰图
+<img width="1359" alt="image" src="https://user-images.githubusercontent.com/76903172/190726007-6400ba8a-2251-4bdd-b91d-d7610bc2ad9e.png">
+## BCSm2p256v1 火焰图
+<img width="1361" alt="image" src="https://user-images.githubusercontent.com/76903172/190726728-6a59ea78-f3a2-42d9-8b4a-a3901e5c7e8c.png">
