@@ -26,4 +26,4 @@ JFR demo在JFRtest中
 
 并在研读过程中发现[ECDSA](https://github.com/openjdk/jdk/blob/a41b12f430b8d6ebbb634c0a6a077ed13c68bcb7/src/jdk.crypto.ec/share/classes/sun/security/ec/ECDSAOperations.java#L258)的相关验证问题，询问导师后了解到，该组件基本用户TLS中，在TLS中已经做了相关校验。
 
-之后参考(https://www.cnblogs.com/dashou/p/14656458.html)中的相关实现，使用添加到JDK本身中的SM2来生成keypair，并使用BC库来进行验证，并使用JMH和JFR对性能进行测试和分析：
+之后参考[BC库](https://www.cnblogs.com/dashou/p/14656458.html)中的相关实现，使用添加到JDK本身中的SM2来生成keypair，并使用BC库来进行验证，并使用JMH和JFR对性能进行测试和分析：
